@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nguyen Dang Tri - Researcher in 5G, AI, AR/VR, and Explainable AI">
+    <title>Nguyen Dang Tri | Researcher</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --text: #f5f5f5;
+            --text-secondary: #a0a0a0;
+            --card: #151515;
+            --border: #2a2a2a;
+            --accent: #0084ff;
+            --accent-hover: #0066cc;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="light"] {
+            --bg: #ffffff;
+            --bg-secondary: #f8f8f8;
+            --text: #0a0a0a;
+            --text-secondary: #666666;
+            --card: #f5f5f5;
+            --border: #e5e5e5;
+            --accent: #0084ff;
+            --accent-hover: #0066cc;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            background: var(--bg-secondary);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] header {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 16px;
+            }
+            nav a {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                display: none;
+            }
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 132, 255, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(30px, -30px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            animation: fade-in 1s ease-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero .title {
+            font-size: 24px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+            .hero .title {
+                font-size: 20px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero .title {
+                font-size: 18px;
+            }
+            .hero p {
+                font-size: 14px;
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        section:first-of-type {
+            border-top: none;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+            letter-spacing: -0.5px;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 40px 0;
+            }
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 24px;
+            }
+        }
+
+        /* About */
+        .about-content {
+            max-width: 800px;
+        }
+
+        .about p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Research Areas */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .research-card {
+            padding: 32px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .research-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .research-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .research-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Publications */
+        .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .publication-item {
+            padding: 24px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .publication-item:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .publication-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .publication-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .publication-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Patents */
+        .patents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .patent-card {
+            padding: 28px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .patent-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .patent-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .patent-date {
+            font-size: 13px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .patent-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Highlights */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+
+        .highlight-card {
+            padding: 32px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .highlight-card .tag {
+            display: inline-block;
+            padding: 6px 12px;
+            background: rgba(0, 132, 255, 0.1);
+            color: var(--accent);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .highlight-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .highlight-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Contact */
+        .contact-content {
+            max-width: 600px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .contact-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            min-width: 100px;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-hover);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+            .patents-grid {
+                grid-template-columns: 1fr;
+            }
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+            .theme-toggle {
+                width: 44px;
+                height: 44px;
+                top: 20px;
+                right: 20px;
+            }
+            header {
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                top: 16px;
+                right: 16px;
+            }
+            .theme-toggle svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <svg id="theme-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </button>
+
+    <header>
+        <nav>
+            <div class="logo">NDT</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="reveal">Nguyen Dang Tri</h1>
+                <div class="title">Researcher</div>
+                <p class="reveal">Exploring the intersection of 5G, Artificial Intelligence, AR/VR, and Explainable AI to build intelligent systems for tomorrow.</p>
+                <button class="cta-button reveal" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })">Explore My Work</button>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title reveal">About</h2>
+                <div class="about-content">
+                    <p class="reveal">I am a researcher passionate about advancing technology at the cutting edge of modern telecommunications and artificial intelligence. My work spans across 5G networks, machine learning, augmented and virtual reality, and developing AI systems that are more transparent and interpretable.</p>
+                    <p class="reveal">With a focus on both theoretical foundations and practical applications, I strive to bridge the gap between academic research and real-world implementation. My goal is to create technology that not only performs well but also is understandable and trustworthy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Areas -->
+        <section id="research" class="research">
+            <div class="container">
+                <h2 class="section-title reveal">Research Areas</h2>
+                <div class="research-grid">
+                    <div class="research-card reveal">
+                        <h3>5G Networks</h3>
+                        <p>Next-generation wireless communications, network optimization, and spectrum efficiency for ultra-reliable low-latency communications.</p>
+                    </div>
+                    <div class="research-card reveal">
+                        <h3>Artificial Intelligence</h3>
+                        <p>Deep learning, neural networks, and machine learning algorithms with applications across telecommunications and IoT systems.</p>
+                    </div>
+                    <div class="research-card reveal">
+                        <h3>AR/VR Technology</h3>
+                        <p>Immersive experiences, spatial computing, and real-time data visualization for next-generation user interfaces.</p>
+                    </div>
+                    <div class="research-card reveal">
+                        <h3>Explainable AI (X-AI)</h3>
+                        <p>Interpretability of machine learning models, transparency in decision-making, and trustworthy AI systems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications -->
+        <section id="publications" class="publications">
+            <div class="container">
+                <h2 class="section-title reveal">Publications</h2>
+                <div class="publications-list">
+                    <article class="publication-item reveal">
+                        <div class="publication-title">Efficient Spectrum Allocation in 5G Networks Using Deep Reinforcement Learning</div>
+                        <div class="publication-meta">
+                            <span>IEEE Transactions on Mobile Computing</span>
+                            <span>2024</span>
+                        </div>
+                    </article>
+                    <article class="publication-item reveal">
+                        <div class="publication-title">Towards Transparent Neural Networks: Interpretability Methods for Complex AI Systems</div>
+                        <div class="publication-meta">
+                            <span>ACM Conference on Explainable AI</span>
+                            <span>2023</span>
+                        </div>
+                    </article>
+                    <article class="publication-item reveal">
+                        <div class="publication-title">Real-time Object Detection in AR Environments Using Edge Computing</div>
+                        <div class="publication-meta">
+                            <span>International Conference on Virtual Reality</span>
+                            <span>2023</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patents -->
+        <section id="patents" class="patents">
+            <div class="container">
+                <h2 class="section-title reveal">Patents</h2>
+                <div class="patents-grid">
+                    <div class="patent-card reveal">
+                        <div class="patent-date">Filed 2023</div>
+                        <h3>Adaptive Network Slicing Framework for 5G Systems</h3>
+                        <p>A method for dynamic network resource allocation and slicing optimization in 5G infrastructure using machine learning.</p>
+                    </div>
+                    <div class="patent-card reveal">
+                        <div class="patent-date">Filed 2024</div>
+                        <h3>Real-time XAI Pipeline for Edge Devices</h3>
+                        <p>System and method for deploying explainable AI models on edge computing devices with minimal computational overhead.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Highlights -->
+        <section id="highlights" class="highlights">
+            <div class="container">
+                <h2 class="section-title reveal">Research Highlights</h2>
+                <div class="highlights-grid">
+                    <div class="highlight-card reveal">
+                        <span class="tag">5G + AI</span>
+                        <h3>Intelligent Network Management</h3>
+                        <p>Developed an AI-driven system for autonomous network optimization that reduces latency by 40% while improving throughput efficiency in 5G deployments.</p>
+                    </div>
+                    <div class="highlight-card reveal">
+                        <span class="tag">XAI</span>
+                        <h3>Interpretability Framework</h3>
+                        <p>Created a novel framework for making deep neural networks interpretable, enabling stakeholders to understand AI decisions in critical applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title reveal">Contact</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item reveal">
+                            <span class="contact-label">Email</span>
+                            <a href="mailto:contact@nguyendangtri.com">contact@nguyendangtri.com</a>
+                        </div>
+                        <div class="contact-item reveal">
+                            <span class="contact-label">Location</span>
+                            <span style="color: var(--text-secondary);">Vietnam</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link reveal" aria-label="LinkedIn">in</a>
+                        <a href="#" class="social-link reveal" aria-label="GitHub">gh</a>
+                        <a href="#" class="social-link reveal" aria-label="Twitter">𝕏</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Nguyen Dang Tri. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const htmlElement = document.documentElement;
+        const THEME_KEY = 'theme-preference';
+
+        function initTheme() {
+            const stored = localStorage.getItem(THEME_KEY);
+            const preference = stored || 'dark';
+            htmlElement.setAttribute('data-theme', preference);
+            updateThemeIcon(preference);
+        }
+
+        function updateThemeIcon(theme) {
+            const icon = document.getElementById('theme-icon');
+            if (theme === 'dark') {
+                icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+            } else {
+                icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const current = htmlElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', next);
+            localStorage.setItem(THEME_KEY, next);
+            updateThemeIcon(next);
+        });
+
+        initTheme();
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
